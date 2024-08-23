@@ -1,0 +1,27 @@
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Equipamento</th>
+                <th scope="col">NumSerie</th>
+                <th scope="col">Prefixo</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for eqpto in equipamentos %}
+            <tr>
+                <th scope="row">{{ eqpto.id }}</th>
+                <td>{{ eqpto.Desc }}</td>
+                <td>{{ eqpto.NumSerie }}</td>
+                <td>{{ eqpto.Prefixo }}</td>
+                <td>
+                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-danger">Excluir</button>
+                </td>
+            </tr>
+        {% endfor %}
+           
+        </tbody>
+    </table>
