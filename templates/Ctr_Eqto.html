@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Equipamentos</title>
+    <link rel="stylesheet" href="/static/css/style_listaeqto.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        {% set endpoint = url_for( request.endpoint, **request.view_args) %}
+        <div class="header">
+            <span>Equipamentos Cadastrados</span>
+            <a href="..{{endpoint}}/edit/new">
+                <button id="new">Incluir</i></button>
+            </a>
+        </div>
+
+        <div class="divTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID - Nome</th>
+                        <th>Num. Serie</th>
+                        <th>Status</th>
+                        <th>OS</th>
+                        <th>Certificadora</th>
+                        <th>Data validade</th>
+                        <th class="acao">Editar</th>
+                        <th class="acao">Excluir</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                 {% for eqpto in equipamentos %}
+                    <tr>
+                        <td>{{ eqpto.id }} - {{eqpto.Desc}}</td>
+                        <td>{{ eqpto.NumSerie }}</td>
+                        <td>{{ eqpto.Status }}</td>
+                        <td>{{ eqpto.OS }}</td>
+                        <td>{{ eqpto.cert }}</td>
+                        <td>{{ eqpto.data }}</td>
+
+                        <td class="acao">
+
+                            <a href="..{{endpoint}}/edit/{{eqpto.id}}">
+                                <button><i class='bx bx-edit'></i></button>
+                            </a>
+                        </td>
+                        <td class="acao">
+                            <a href="..{{endpoint}}/delete/{{eqpto.id}}">
+                                <button><i class='bx bx-trash'></i></button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
